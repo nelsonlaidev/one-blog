@@ -31,13 +31,7 @@ const PostCard = (props: PostCardProps) => {
           {showAuthor && (
             <>
               <Link href={`/users/${author.id}`} className='flex items-center gap-1.5 text-sm'>
-                <UserAvatar
-                  width={24}
-                  height={24}
-                  userId={author.id}
-                  src={author.image}
-                  alt={author.name}
-                />
+                <UserAvatar width={24} height={24} userId={author.id} src={author.image} alt={author.name} />
                 <span>{author.name}</span>
               </Link>
               <span>·</span>
@@ -51,7 +45,7 @@ const PostCard = (props: PostCardProps) => {
         </div>
         <Link href={`/${published ? 'posts' : 'editor'}/${id}`} className='block space-y-2'>
           <h2 className='text-lg font-semibold'>{title}</h2>
-          <p className='text-muted-foreground line-clamp-3'>{description}</p>
+          <p className='line-clamp-3 text-muted-foreground'>{description}</p>
         </Link>
         <div className='mt-4 flex items-center gap-2 text-sm'>
           <HeartIcon className='size-4' />

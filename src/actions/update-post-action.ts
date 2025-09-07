@@ -10,7 +10,7 @@ import { authenticatedActionClient } from '@/lib/safe-action'
 import { updatePostSchema } from './schema'
 
 export const updatePostAction = authenticatedActionClient
-  .schema(updatePostSchema)
+  .inputSchema(updatePostSchema)
   .action(async ({ parsedInput: { postId, ...data }, ctx: { user } }) => {
     await db
       .update(posts)

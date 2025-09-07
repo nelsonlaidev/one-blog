@@ -1,5 +1,4 @@
 import { type Editor } from '@tiptap/react'
-import { cn } from '@tszhong0411/utils'
 import {
   BoldIcon,
   CodeIcon,
@@ -23,11 +22,13 @@ import {
 } from 'lucide-react'
 import { useCallback } from 'react'
 
+import { cn } from '@/utils/cn'
+
 type ToolbarProps = {
   editor: Editor
 }
 
-const Divider = () => <div className='bg-muted mx-3 h-5 w-[2px]' />
+const Divider = () => <div className='mx-3 h-5 w-[2px] bg-muted' />
 
 const Toolbar = (props: ToolbarProps) => {
   const { editor } = props
@@ -55,8 +56,8 @@ const Toolbar = (props: ToolbarProps) => {
   return (
     <div
       className={cn(
-        'bg-background sticky top-[60px] z-10 flex flex-wrap items-center rounded-t border p-1',
-        '[&>button:hover]:bg-muted [&>button]:mr-1 [&>button]:size-7 [&>button]:rounded [&>button]:p-1',
+        'sticky top-[60px] z-10 flex flex-wrap items-center rounded-t border bg-background p-1',
+        '[&>button]:mr-1 [&>button]:size-7 [&>button]:rounded-sm [&>button]:p-1 [&>button:hover]:bg-muted',
         '[&>button:disabled]:cursor-not-allowed [&>button:disabled]:opacity-50'
       )}
     >
@@ -196,11 +197,7 @@ const Toolbar = (props: ToolbarProps) => {
       >
         <MinusIcon className='size-4' />
       </button>
-      <button
-        type='button'
-        onClick={() => editor.chain().focus().unsetAllMarks().run()}
-        aria-label='Clear Formatting'
-      >
+      <button type='button' onClick={() => editor.chain().focus().unsetAllMarks().run()} aria-label='Clear Formatting'>
         <RemoveFormattingIcon className='size-4' />
       </button>
       <Divider />

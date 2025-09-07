@@ -1,17 +1,19 @@
 'use client'
 
-import { Button, toast } from '@tszhong0411/ui'
 import { Loader2Icon, PenSquareIcon } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { useAction } from 'next-safe-action/hooks'
+import { toast } from 'sonner'
 
 import { createPostAction } from '@/actions/create-post-action'
+
+import { Button } from './ui/button'
 
 const NewPostButton = () => {
   const router = useRouter()
   const action = useAction(createPostAction, {
     onSuccess: ({ data }) => {
-      if (!data?.postId) {
+      if (!data.postId) {
         toast.error('Failed to create new post')
         return
       }

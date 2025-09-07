@@ -1,7 +1,7 @@
 {
   "cSpell.diagnosticLevel": "Warning",
   "cSpell.enabled": true,
-  "cSpell.ignorePaths": ["package-lock.json", "node_modules", "vscode-extension", ".git/objects"],
+  "cSpell.ignorePaths": ["node_modules", ".git"],
 
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",
@@ -12,21 +12,14 @@
   "editor.formatOnSave": true,
 
   "eslint.runtime": "node",
-  "eslint.useFlatConfig": true,
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ],
+  "eslint.workingDirectories": [{ "mode": "auto" }],
 
   "files.associations": {
     "*.css": "tailwindcss",
     ".env*": "properties"
   },
 
-  "tailwindCSS.experimental.classRegex": [
-    ["([\"'`][^\"'`]*.*?[\"'`])", "[\"'`]([^\"'`]*).*?[\"'`]"]
-  ],
+  "tailwindCSS.classFunctions": ["cva", "cn"],
 
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "typescript.preferences.preferTypeOnlyAutoImports": true,

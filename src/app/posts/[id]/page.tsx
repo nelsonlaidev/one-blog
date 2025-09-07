@@ -54,7 +54,8 @@ export const generateMetadata = async (props: PostPageProps): Promise<Metadata> 
 }
 
 const PostPage = async (props: PostPageProps) => {
-  const { id } = await props.params
+  const { params } = props
+  const { id } = await params
 
   const user = await getCurrentUser()
   const { post } = await getPostById(id)
@@ -71,21 +72,15 @@ const PostPage = async (props: PostPageProps) => {
   return (
     <>
       <div className='space-y-4'>
-        <div className='text-muted-foreground flex gap-2'>
+        <div className='flex gap-2 text-muted-foreground'>
           <time dateTime={dateTime}>{formatPostDate(createdAt, { relative: true })}</time>
           <span>·</span>
           <span>{readingTime(content ?? '').text}</span>
         </div>
         <h1 className='text-2xl font-semibold tracking-tight md:text-3xl lg:text-4xl'>{title}</h1>
-        <p className='text-muted-foreground text-lg md:text-xl'>{description}</p>
+        <p className='text-lg text-muted-foreground md:text-xl'>{description}</p>
         <Link href={`/users/${author.id}`} className='flex items-center gap-2'>
-          <UserAvatar
-            width={32}
-            height={32}
-            src={author.image}
-            alt={author.name}
-            userId={author.id}
-          />
+          <UserAvatar width={32} height={32} src={author.image} alt={author.name} userId={author.id} />
           <div className='text-sm'>
             <div>{author.name}</div>
           </div>

@@ -5,15 +5,10 @@ import { boolean, pgEnum, pgTable, text, timestamp } from 'drizzle-orm/pg-core'
 import { users } from './auth'
 import { likes } from './like'
 
-export enum Visibility {
-  Public = 'public',
-  Private = 'private'
-}
+const visibilities = ['public', 'private'] as const
+export type Visibility = (typeof visibilities)[number]
+export const visibilityEnum = pgEnum('visibility', visibilities)
 
-export const visibilityEnum = pgEnum(
-  'visibility',
-  Object.values(Visibility) as [string, ...string[]]
-)
 export const posts = pgTable('post', {
   id: text('id').notNull().primaryKey().$defaultFn(createId),
   authorId: text('author_id')

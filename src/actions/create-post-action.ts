@@ -9,7 +9,7 @@ import { authenticatedActionClient } from '@/lib/safe-action'
 import { createPostSchema } from './schema'
 
 export const createPostAction = authenticatedActionClient
-  .schema(createPostSchema)
+  .inputSchema(createPostSchema)
   .action(async ({ parsedInput: { title }, ctx: { user } }) => {
     const [post] = await db
       .insert(posts)

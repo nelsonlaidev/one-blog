@@ -1,5 +1,12 @@
 'use client'
 
+import { Loader2Icon } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { useAction } from 'next-safe-action/hooks'
+import { useState } from 'react'
+import { toast } from 'sonner'
+
+import { deleteAccountAction } from '@/actions/delete-account-action'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -9,19 +16,11 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
-  Button,
-  buttonVariants,
-  Input,
-  Label,
-  toast
-} from '@tszhong0411/ui'
-import { Loader2Icon } from 'lucide-react'
-import { useRouter } from 'next/navigation'
-import { useAction } from 'next-safe-action/hooks'
-import { useState } from 'react'
-
-import { deleteAccountAction } from '@/actions/delete-account-action'
+  AlertDialogTrigger
+} from '@/components/ui/alert-dialog'
+import { Button, buttonVariants } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
 const Danger = () => {
   const [value, setValue] = useState('')
@@ -53,9 +52,9 @@ const Danger = () => {
     <div className='rounded-lg border border-red-500/50'>
       <div className='space-y-4 p-4'>
         <h4 className='text-xl font-semibold'>Delete my account</h4>
-        <p className='text-muted-foreground text-sm'>
-          This action will permanently remove all your posts, data, and personal information
-          associated with your account. This action is irreversible and cannot be undone.
+        <p className='text-sm text-muted-foreground'>
+          This action will permanently remove all your posts, data, and personal information associated with your
+          account. This action is irreversible and cannot be undone.
         </p>
       </div>
       <div className='rounded-b-lg border-t border-red-500/50 bg-red-500/20 px-4 py-2.5'>
@@ -75,15 +74,13 @@ const Danger = () => {
               <AlertDialogHeader>
                 <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                 <AlertDialogDescription>
-                  This action cannot be undone. This will permanently delete your account and remove
-                  your data from our database.
+                  This action cannot be undone. This will permanently delete your account and remove your data from our
+                  database.
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <div className='my-4 flex flex-col gap-2'>
                 <Label htmlFor='confirm' className='text-muted-foreground'>
-                  Type{' '}
-                  <span className='text-secondary-foreground font-semibold'>delete my account</span>{' '}
-                  to continue:
+                  Type <span className='font-semibold text-secondary-foreground'>delete my account</span> to continue:
                 </Label>
                 <Input
                   type='text'

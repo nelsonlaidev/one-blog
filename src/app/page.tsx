@@ -1,8 +1,8 @@
-import { range } from '@tszhong0411/utils'
 import { Suspense } from 'react'
 
 import Posts from '@/components/posts'
 import PostsPlaceholder from '@/components/posts-placeholder'
+import { range } from '@/utils/range'
 
 const HomePage = () => {
   return (

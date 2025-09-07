@@ -2,20 +2,12 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "baseUrl": ".",
-    "jsx": "preserve",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"],
+      "~/*": ["./public/*"]
     }
   },
   "exclude": ["node_modules"],
-  "extends": "@tszhong0411/tsconfig/nextjs.json",
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts",
-    "postcss.config.mjs",
-    "eslint.config.mjs",
-    "prettier.config.js"
-  ]
+  "extends": "@nelsonlaidev/typescript-config/nextjs.json",
+  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts", "postcss.config.mjs"]
 }

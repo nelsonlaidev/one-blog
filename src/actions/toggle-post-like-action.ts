@@ -10,7 +10,7 @@ import { authenticatedActionClient } from '@/lib/safe-action'
 import { togglePostLikeSchema } from './schema'
 
 export const togglePostLikeAction = authenticatedActionClient
-  .schema(togglePostLikeSchema)
+  .inputSchema(togglePostLikeSchema)
   .action(async ({ parsedInput: { postId }, ctx: { user } }) => {
     const existingLike = await db.query.likes.findFirst({
       columns: {

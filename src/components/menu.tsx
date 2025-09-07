@@ -2,23 +2,20 @@
 
 import type { User } from '@/db/schema'
 
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { signOut } from 'next-auth/react'
+
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
-  buttonVariants,
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from '@tszhong0411/ui'
-import { UserIcon } from 'lucide-react'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { signOut } from 'next-auth/react'
+} from '@/components/ui/dropdown-menu'
 
-import { getDefaultImage } from '@/utils/get-default-image'
+import { buttonVariants } from './ui/button'
+import UserAvatar from './user-avatar'
 
 type MenuProps = {
   user: User | null
@@ -37,23 +34,17 @@ const Menu = (props: MenuProps) => {
   }
 
   const { name, image, email, id } = user
-  const defaultImage = getDefaultImage(id)
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
-        <Avatar className='size-8'>
-          <AvatarImage src={image ?? defaultImage} alt={name} />
-          <AvatarFallback>
-            <UserIcon className='size-4' />
-          </AvatarFallback>
-        </Avatar>
+        <UserAvatar width={40} height={40} src={image} alt={name} userId={id} />
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
         <DropdownMenuItem className='flex-col items-start' asChild>
           <Link href={`/users/${id}`}>
             <div className='text-sm'>{name}</div>
-            <div className='text-muted-foreground text-xs'>{email}</div>
+            <div className='text-xs text-muted-foreground'>{email}</div>
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
