@@ -3,10 +3,20 @@ version: '3'
 services:
   db:
     image: postgres:16-alpine
-    container_name: one_blog_postgres
+    container_name: one-blog-postgres
     ports:
       - 5432:5432
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=one_blog
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - one-blog-network
+volumes:
+  db:
+
+networks:
+  one-blog-network:
+    driver: bridge
