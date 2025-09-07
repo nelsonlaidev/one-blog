@@ -1,5 +1,6 @@
-import { cn } from '@tszhong0411/utils'
 import Image, { type ImageProps } from 'next/image'
+
+import { cn } from '@/utils/cn'
 
 type UserAvatarProps = {
   userId: string

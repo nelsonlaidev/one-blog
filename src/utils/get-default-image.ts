@@ -1,1 +1,1 @@
-export const getDefaultImage = (id: string) => `https://nelsonlai.me/api/avatar/${id}`
+export const getDefaultImage = (id: string) => `https://robohash.org/${id}`

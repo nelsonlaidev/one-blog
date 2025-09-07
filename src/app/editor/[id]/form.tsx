@@ -1,34 +1,30 @@
 'use client'
 
+import { GlobeIcon, Loader2Icon, LockIcon } from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { useAction } from 'next-safe-action/hooks'
+import { useState } from 'react'
+import { toast } from 'sonner'
+
+import { updatePostAction } from '@/actions/update-post-action'
+import Editor from '@/components/editor'
+import { Button } from '@/components/ui/button'
 import {
-  Button,
   Dialog,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
-  Input,
-  Label,
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-  Textarea,
-  toast
-} from '@tszhong0411/ui'
-import { cn } from '@tszhong0411/utils'
-import { GlobeIcon, Loader2Icon, LockIcon } from 'lucide-react'
-import { useRouter } from 'next/navigation'
-import { useAction } from 'next-safe-action/hooks'
-import { useState } from 'react'
-
-import { updatePostAction } from '@/actions/update-post-action'
-import Editor from '@/components/editor'
-import { type Post, Visibility } from '@/db/schema'
+  DialogTrigger
+} from '@/components/ui/dialog'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Textarea } from '@/components/ui/textarea'
+import { type Post, type Visibility } from '@/db/schema'
 import { capitalize } from '@/utils/capitalize'
+import { cn } from '@/utils/cn'
 
 type FormProps = {
   post: Post
@@ -39,7 +35,7 @@ const Form = (props: FormProps) => {
   const [title, setTitle] = useState(post.title)
   const [description, setDescription] = useState(post.description)
   const [content, setContent] = useState(post.content)
-  const [visibility, setVisibility] = useState<Visibility>(post.visibility as Visibility)
+  const [visibility, setVisibility] = useState<Visibility>(post.visibility)
   const [isOpen, setIsOpen] = useState(false)
   const router = useRouter()
   const action = useAction(updatePostAction, {
@@ -87,20 +83,14 @@ const Form = (props: FormProps) => {
           <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild>
               <Button variant='outline'>
-                {visibility === Visibility.Public ? (
-                  <GlobeIcon className='mr-2 size-4' />
-                ) : (
-                  <LockIcon className='mr-2 size-4' />
-                )}
+                {visibility === 'public' ? <GlobeIcon className='mr-2 size-4' /> : <LockIcon className='mr-2 size-4' />}
                 {capitalize(visibility)}
               </Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
                 <DialogTitle>Change visibility</DialogTitle>
-                <DialogDescription>
-                  Keep this post private or make it publicly accessible.
-                </DialogDescription>
+                <DialogDescription>Keep this post private or make it publicly accessible.</DialogDescription>
               </DialogHeader>
               <div className='space-y-1.5'>
                 <Label htmlFor='visibility'>Visibility</Label>
@@ -114,8 +104,8 @@ const Form = (props: FormProps) => {
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value={Visibility.Public}>Public</SelectItem>
-                    <SelectItem value={Visibility.Private}>Private</SelectItem>
+                    <SelectItem value='public'>Public</SelectItem>
+                    <SelectItem value='private'>Private</SelectItem>
                   </SelectContent>
                 </Select>
               </div>

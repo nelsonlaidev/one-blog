@@ -8,22 +8,22 @@ type Links = Array<{
 const Footer = () => {
   const links: Links = [
     {
-      href: 'https://twitter.com/tszhong0411',
+      href: 'https://nelsonlai.link/s/twitter',
       icon: <SiX className='size-4' />
     },
     {
-      href: 'https://github.com/@tszhong0411',
+      href: 'https://nelsonlai.link/s/github',
       icon: <SiGithub className='size-4' />
     },
     {
-      href: 'https://www.instagram.com/tszhong0411/',
+      href: 'https://nelsonlai.link/s/instagram',
       icon: <SiInstagram className='size-4' />
     }
   ]
 
   return (
     <footer className='mx-auto max-w-4xl px-6'>
-      <div className='h-footer flex items-center justify-between'>
+      <div className='flex h-footer items-center justify-between'>
         <p className='text-sm'>© {new Date().getFullYear()} Nelson Lai</p>
 
         <div className='flex items-center gap-4'>

@@ -1,9 +1,9 @@
-import { Separator } from '@tszhong0411/ui'
 import { FileIcon } from 'lucide-react'
 import { type Metadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import PostCard from '@/components/post-card'
+import { Separator } from '@/components/ui/separator'
 import UserAvatar from '@/components/user-avatar'
 import { getCurrentUser } from '@/lib/auth'
 import { SITE_URL } from '@/lib/constants'
@@ -37,7 +37,8 @@ export const generateMetadata = async (props: UserPageProps): Promise<Metadata> 
 }
 
 const UserPage = async (props: UserPageProps) => {
-  const { id } = await props.params
+  const { params } = props
+  const { id } = await params
   const currentUser = await getCurrentUser()
   const { user } = await getUserById(id)
 
@@ -53,22 +54,17 @@ const UserPage = async (props: UserPageProps) => {
         </div>
         <div className='text-xl font-semibold lg:text-3xl'>{user.name}</div>
       </div>
-      {user.bio && <p className='text-muted-foreground mt-4'>{user.bio}</p>}
+      {user.bio && <p className='mt-4 text-muted-foreground'>{user.bio}</p>}
       <Separator className='my-4' />
       {user.posts.length > 0 ? (
         <div className='mt-4'>
           {user.posts.map((post) => (
-            <PostCard
-              key={post.id}
-              post={{ ...post, user: { ...user, id } }}
-              showAuthor={false}
-              user={currentUser}
-            />
+            <PostCard key={post.id} post={{ ...post, user: { ...user, id } }} showAuthor={false} user={currentUser} />
           ))}
         </div>
       ) : (
         <div className='my-24 flex flex-col items-center justify-center gap-3'>
-          <div className='bg-muted flex size-24 items-center justify-center rounded-full'>
+          <div className='flex size-24 items-center justify-center rounded-full bg-muted'>
             <FileIcon className='size-14' />
           </div>
           <div className='text-2xl font-semibold'>No posts yet</div>

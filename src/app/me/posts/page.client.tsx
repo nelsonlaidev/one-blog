@@ -2,11 +2,11 @@
 
 import type { User } from '@/db/schema'
 
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@tszhong0411/ui'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useState } from 'react'
 
 import PostCard, { type PostCardProps } from '@/components/post-card'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 type ContentProps = {
   posts: Array<PostCardProps['post']>
@@ -32,25 +32,17 @@ const PostsClient = (props: ContentProps) => {
   return (
     <Tabs defaultValue='drafts' value={activeTab} onValueChange={handleTabChange}>
       <TabsList>
-        <TabsTrigger value='drafts'>
-          Drafts {drafts.length > 0 && <>({drafts.length})</>}
-        </TabsTrigger>
-        <TabsTrigger value='published'>
-          Published {published.length > 0 && <>({published.length})</>}
-        </TabsTrigger>
+        <TabsTrigger value='drafts'>Drafts {drafts.length > 0 && <>({drafts.length})</>}</TabsTrigger>
+        <TabsTrigger value='published'>Published {published.length > 0 && <>({published.length})</>}</TabsTrigger>
       </TabsList>
       <TabsContent value='drafts'>
-        {drafts.length === 0 && (
-          <div className='py-8 text-center'>You don&apos;t have any drafts yet.</div>
-        )}
+        {drafts.length === 0 && <div className='py-8 text-center'>You don&apos;t have any drafts yet.</div>}
         {drafts.map((post) => (
           <PostCard key={post.id} post={post} user={user} showAuthor={false} />
         ))}
       </TabsContent>
       <TabsContent value='published'>
-        {published.length === 0 && (
-          <div className='py-8 text-center'>You haven&apos;t published any posts yet.</div>
-        )}
+        {published.length === 0 && <div className='py-8 text-center'>You haven&apos;t published any posts yet.</div>}
         {published.map((post) => (
           <PostCard key={post.id} post={post} user={user} showAuthor={false} />
         ))}

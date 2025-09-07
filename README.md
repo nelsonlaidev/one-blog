@@ -1,29 +1,9 @@
-<div align="center">
-  <a href="https://one-blog.nelsonlai.me">
-    <img src="https://nelsonlai.me/images/projects/one-blog/cover.png">
-  </a>
+<p align="center">
+  <img src="public/icon.png" height="128">
+  <h1 align="center">One Blog</h1>
+</p>
 
-  <h1 align="center">
-    One Blog
-  </h1>
-
-  <img src="https://img.shields.io/badge/Next.js-000000.svg?style=for-the-badge&logo=Next.js&labelColor=000" alt="Framework" />
-  <img src="https://img.shields.io/github/languages/top/tszhong0411/one-blog?style=for-the-badge&labelColor=000" alt="Language" />
-  <img src="https://img.shields.io/github/license/tszhong0411/one-blog?style=for-the-badge&labelColor=000" alt="License" />
-</div>
-
-## Tech Stack
-
-| Name             | Link                                      |
-| ---------------- | ----------------------------------------- |
-| Framework        | [Next.js](https://nextjs.org/)            |
-| Deployment       | [Vercel](https://vercel.com)              |
-| Database         | [PostgreSQL](https://www.postgresql.org/) |
-| ORM              | [Drizzle](https://orm.drizzle.team/)      |
-| Rich Text Editor | [Tiptap](https://tiptap.dev)              |
-| Icons            | [Lucide](https://lucide.dev/)             |
-| Authentication   | [NextAuth](https://next-auth.js.org)      |
-| Styling          | [TailwindCSS](https://tailwindcss.com)    |
+A simple and full stack blogging platform built with Next.js.
 
 ## Features
 
@@ -38,41 +18,42 @@
 
 Follow these steps to run the project locally on your machine:
 
-1. Clone the repository
+1. Clone the repository.
 
 ```bash
-git clone https://github.com/tszhong0411/one-blog.git
+git clone https://github.com/nelsonlaidev/one-blog.git
 ```
 
-2. Navigate to the project directory
+2. Navigate to the project directory.
 
 ```bash
 cd one-blog
 ```
 
-3. Install dependencies
+3. Install dependencies.
 
 ```bash
 pnpm install
 ```
 
-4. Configure environment variables
+4. Configure environment variables.
 
 Create a `.env.local` file based on the provided `.env.example` file and fill in the necessary variables.
 
-5. Start docker compose
+5. Start docker compose.
 
 ```bash
 docker compose up -d
 ```
 
-6. Run the development server
+6. Run the development server.
 
 ```bash
 pnpm dev
 ```
 
-<hr>
+---
+
 <p align="center">
 Made with ❤️ in Hong Kong
 </p>

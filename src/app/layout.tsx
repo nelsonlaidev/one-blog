@@ -2,13 +2,14 @@ import type { Metadata, Viewport } from 'next'
 
 import '@/styles/globals.css'
 
-import { Toaster } from '@tszhong0411/ui'
-import { cn } from '@tszhong0411/utils'
+import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 
 import Footer from '@/components/footer'
 import Header from '@/components/header'
-import { SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/constants'
+import { Toaster } from '@/components/ui/sonner'
+import { MY_NAME, SITE_DESCRIPTION, SITE_TITLE, SITE_URL } from '@/lib/constants'
+import { cn } from '@/utils/cn'
 
 import Providers from './providers'
 
@@ -34,17 +35,24 @@ export const metadata: Metadata = {
       'max-snippet': -1
     }
   },
-  manifest: '/favicon/site.webmanifest',
+  authors: {
+    name: MY_NAME,
+    url: 'https://nelsonlai.me'
+  },
+  manifest: '/site.webmanifest',
   twitter: {
-    title: SITE_NAME,
     card: 'summary_large_image',
-    site: '@tszhong0411',
-    creator: '@tszhong0411',
+    title: MY_NAME,
+    description: SITE_DESCRIPTION,
+    site: '@nelsonlaidev',
+    siteId: '1152256803746377730',
+    creator: '@nelsonlaidev',
+    creatorId: '1152256803746377730',
     images: [
       {
-        url: 'https://nelsonlai.me/images/projects/one-blog/cover.png',
-        width: 1280,
-        height: 832,
+        url: '/og-image.png',
+        width: 1200,
+        height: 630,
         alt: SITE_DESCRIPTION
       }
     ]
@@ -53,7 +61,7 @@ export const metadata: Metadata = {
     canonical: SITE_URL
   },
   keywords: ['blog', 'one-blog', 'full-stack blog', 'nextjs blog'],
-  creator: 'tszhong0411',
+  creator: 'nelsonlaidev',
   openGraph: {
     url: SITE_URL,
     type: 'website',
@@ -63,7 +71,7 @@ export const metadata: Metadata = {
     locale: 'en-US',
     images: [
       {
-        url: 'https://nelsonlai.me/images/projects/one-blog/cover.png',
+        url: '/og-image.png',
         width: 1280,
         height: 832,
         alt: SITE_DESCRIPTION,
@@ -72,27 +80,36 @@ export const metadata: Metadata = {
     ]
   },
   icons: {
-    icon: '/favicon/favicon.ico',
-    shortcut: '/favicon/favicon.ico',
+    icon: {
+      rel: 'icon',
+      type: 'image/x-icon',
+      url: '/favicon.ico'
+    },
     apple: [
       {
-        url: '/favicon/apple-touch-icon.png',
-        sizes: '180x180',
-        type: 'image/png'
+        type: 'image/png',
+        url: '/apple-touch-icon.png',
+        sizes: '180x180'
       }
     ],
     other: [
       {
         rel: 'icon',
-        type: 'image/png',
-        sizes: '16x16',
-        url: '/favicon/favicon-16x16.png'
+        type: 'image/svg+xml',
+        url: '/favicon.svg',
+        sizes: 'any'
       },
       {
         rel: 'icon',
         type: 'image/png',
-        sizes: '32x32',
-        url: '/favicon/favicon-32x32.png'
+        url: '/favicon-16x16.png',
+        sizes: '16x16'
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        url: '/favicon-32x32.png',
+        sizes: '32x32'
       }
     ]
   }
@@ -108,11 +125,11 @@ const RootLayout = (props: RootLayoutProps) => {
   const { children } = props
 
   return (
-    <html lang='en-US' className={cn(GeistSans.variable)} suppressHydrationWarning>
+    <html lang='en-US' className={cn(GeistSans.variable, GeistMono.variable)} suppressHydrationWarning>
       <body>
         <Providers>
           <Header />
-          <main className='min-h-page mx-auto max-w-4xl px-6 pt-24 pb-16'>{children}</main>
+          <main className='mx-auto min-h-page max-w-4xl px-6 pt-24 pb-16'>{children}</main>
           <Toaster />
           <Footer />
         </Providers>

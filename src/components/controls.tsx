@@ -2,31 +2,27 @@
 
 import type { User } from '@/db/schema'
 
+import { Loader2Icon, MoreVerticalIcon, PencilIcon, Share2Icon, Trash2Icon } from 'lucide-react'
+import Link from 'next/link'
+import { useAction } from 'next-safe-action/hooks'
+import { useState } from 'react'
+import { toast } from 'sonner'
+
+import { deletePostAction } from '@/actions/delete-post-action'
 import {
   AlertDialog,
   AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  Button,
-  buttonVariants,
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  toast
-} from '@tszhong0411/ui'
-import { Loader2Icon, MoreVerticalIcon, PencilIcon, Share2Icon, Trash2Icon } from 'lucide-react'
-import Link from 'next/link'
-import { useAction } from 'next-safe-action/hooks'
-import { useState } from 'react'
-
-import { deletePostAction } from '@/actions/delete-post-action'
+  AlertDialogTitle
+} from '@/components/ui/alert-dialog'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { SITE_URL } from '@/lib/constants'
 import { copyUrl } from '@/utils/copy-url'
+
+import { AlertDialogFooter, AlertDialogHeader } from './ui/alert-dialog'
+import { Button, buttonVariants } from './ui/button'
 
 type ControlsProps = {
   id: string

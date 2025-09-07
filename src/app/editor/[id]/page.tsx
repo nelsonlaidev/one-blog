@@ -20,7 +20,8 @@ export const metadata: Metadata = {
 }
 
 const EditorPage = async (props: EditorPageProps) => {
-  const { id } = await props.params
+  const { params } = props
+  const { id } = await params
 
   const user = await getCurrentUser()
 

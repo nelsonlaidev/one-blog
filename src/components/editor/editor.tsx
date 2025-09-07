@@ -3,8 +3,9 @@
 import '@/styles/editor.css'
 
 import { EditorContent, type EditorEvents, type EditorOptions, useEditor } from '@tiptap/react'
-import { cn } from '@tszhong0411/utils'
 import { Loader2Icon } from 'lucide-react'
+
+import { cn } from '@/utils/cn'
 
 import { extensions } from './extensions'
 import Toolbar from './toolbar'
@@ -42,10 +43,7 @@ const Editor = (props: EditorProps) => {
       {editor.isEditable && <Toolbar editor={editor} />}
       <EditorContent
         editor={editor}
-        className={cn(
-          'bg-background flex',
-          editor.isEditable && 'min-h-[350px] rounded-b border-x border-b px-3 py-4'
-        )}
+        className={cn('flex bg-background', editor.isEditable && 'min-h-[350px] rounded-b border-x border-b px-3 py-4')}
       />
     </div>
   )

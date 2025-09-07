@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { Visibility } from '@/db/schema'
+import { visibilityEnum } from '@/db/schema'
 
 export const createPostSchema = z.object({
   title: z.string().min(1).max(100)
@@ -20,7 +20,7 @@ export const updatePostSchema = z.object({
   content: z.string().nullable().optional(),
   description: z.string().nullable().optional(),
   published: z.boolean().optional(),
-  visibility: z.nativeEnum(Visibility).optional()
+  visibility: z.enum(visibilityEnum.enumValues).optional()
 })
 
 export const updateUserSchema = z.object({

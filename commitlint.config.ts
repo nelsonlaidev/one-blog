@@ -1,7 +1,5 @@
-import type { UserConfig } from 'cz-git'
+import { defineConfig } from 'czg'
 
-const config: UserConfig = {
+export default defineConfig({
   extends: ['@commitlint/config-conventional']
-}
-
-export default config
+})

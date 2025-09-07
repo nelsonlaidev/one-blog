@@ -12,13 +12,7 @@ const Providers = (props: ProvidesProps) => {
 
   return (
     <SessionProvider>
-      <ThemeProvider
-        attribute='class'
-        defaultTheme='system'
-        enableSystem
-        enableColorScheme
-        disableTransitionOnChange
-      >
+      <ThemeProvider attribute='class' defaultTheme='system' enableSystem enableColorScheme disableTransitionOnChange>
         {children}
       </ThemeProvider>
     </SessionProvider>

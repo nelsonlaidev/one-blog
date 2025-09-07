@@ -3,12 +3,13 @@
 import type { Like, User } from '@/db/schema'
 
 import { createId } from '@paralleldrive/cuid2'
-import { Button, toast } from '@tszhong0411/ui'
-import { cn } from '@tszhong0411/utils'
 import { Heart } from 'lucide-react'
 import { useOptimisticAction } from 'next-safe-action/hooks'
+import { toast } from 'sonner'
 
 import { togglePostLikeAction } from '@/actions/toggle-post-like-action'
+import { Button } from '@/components/ui/button'
+import { cn } from '@/utils/cn'
 
 type LikeButtonProps = {
   likes: Like[]

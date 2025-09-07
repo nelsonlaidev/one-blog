@@ -11,7 +11,7 @@ import { authenticatedActionClient } from '@/lib/safe-action'
 import { updateUserSchema } from './schema'
 
 export const updateUserAction = authenticatedActionClient
-  .schema(updateUserSchema, {
+  .inputSchema(updateUserSchema, {
     // eslint-disable-next-line @typescript-eslint/require-await -- required for the shape
     handleValidationErrorsShape: async (ve) => flattenValidationErrors(ve).fieldErrors
   })

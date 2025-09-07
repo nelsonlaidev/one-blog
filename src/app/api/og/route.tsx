@@ -20,7 +20,6 @@ export const GET = (req: Request) => {
 
   return new ImageResponse(
     (
-      /* eslint-disable @eslint-react/dom/no-unknown-property -- custom attribute */
       <div tw='bg-black flex w-full h-full justify-between flex-col text-white p-24'>
         <div tw='flex flex-col'>
           <div tw='flex items-center'>
@@ -72,7 +71,6 @@ export const GET = (req: Request) => {
         <div tw='flex justify-end text-3xl font-bold'>one-blog.nelsonlai.me</div>
       </div>
     ),
-    /* eslint-enable @eslint-react/dom/no-unknown-property -- custom attribute */
     {
       width: 1200,
       height: 630

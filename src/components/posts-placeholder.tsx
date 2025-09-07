@@ -1,5 +1,6 @@
-import { Skeleton } from '@tszhong0411/ui'
 import { MoreVerticalIcon } from 'lucide-react'
+
+import { Skeleton } from '@/components/ui/skeleton'
 
 const PostsPlaceholder = () => (
   <div className='flex items-start justify-between border-b px-1 py-4'>
