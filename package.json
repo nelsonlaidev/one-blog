@@ -14,7 +14,7 @@
     "build": "next build",
     "check": "pnpm lint && pnpm type-check && pnpm format:check && pnpm check:spelling && pnpm check:knip",
     "check:knip": "pnpm with-env knip",
-    "check:spelling": "cspell -c .cspell.json --no-progress --no-summary --no-must-find-files --unique",
+    "check:spelling": "cspell --no-progress --no-summary --no-must-find-files --unique",
     "clean": "rm -rf .next",
     "db:check": "pnpm with-env drizzle-kit check",
     "db:generate": "pnpm with-env drizzle-kit generate",
