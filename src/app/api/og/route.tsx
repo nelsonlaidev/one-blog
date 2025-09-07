@@ -68,7 +68,7 @@ export const GET = (req: Request) => {
           </div>
           <div tw='mt-20 text-5xl font-semibold'>{title}</div>
         </div>
-        <div tw='flex justify-end text-3xl font-bold'>one-blog.nelsonlai.me</div>
+        <div tw='flex justify-end text-3xl font-bold'>one-blog.nelsonlai.dev</div>
       </div>
     ),
     {

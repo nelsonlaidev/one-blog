@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   },
   authors: {
     name: MY_NAME,
-    url: 'https://nelsonlai.me'
+    url: 'https://nelsonlai.dev'
   },
   manifest: '/site.webmanifest',
   twitter: {
