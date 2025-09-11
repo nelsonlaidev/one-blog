@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, ResolvingMetadata } from 'next'
 
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -14,14 +14,14 @@ import { formatPostDate } from '@/utils/format-post-date'
 
 import LikeButton from './like-button'
 
-type PostPageProps = {
-  params: Promise<{
-    id: string
-  }>
-}
+export const generateMetadata = async (
+  props: PageProps<'/posts/[id]'>,
+  parent: ResolvingMetadata
+): Promise<Metadata> => {
+  const { params } = props
+  const { id } = await params
+  const { openGraph = {}, twitter = {} } = await parent
 
-export const generateMetadata = async (props: PostPageProps): Promise<Metadata> => {
-  const { id } = await props.params
   const { post } = await getPostMetadataById(id)
 
   if (!post) return {}
@@ -32,7 +32,11 @@ export const generateMetadata = async (props: PostPageProps): Promise<Metadata> 
   return {
     title: post.title,
     description: post.description,
+    alternates: {
+      canonical: `${SITE_URL}/posts/${id}`
+    },
     openGraph: {
+      ...openGraph,
       url: `${SITE_URL}/posts/${id}`,
       type: 'article',
       title: post.title,
@@ -49,11 +53,25 @@ export const generateMetadata = async (props: PostPageProps): Promise<Metadata> 
           type: 'image/png'
         }
       ]
+    },
+    twitter: {
+      ...twitter,
+      title: post.title,
+      description: post.description ?? undefined,
+      images: [
+        {
+          url: `${SITE_URL}/api/og?title=${post.title}`,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+          type: 'image/png'
+        }
+      ]
     }
   }
 }
 
-const PostPage = async (props: PostPageProps) => {
+const PostPage = async (props: PageProps<'/posts/[id]'>) => {
   const { params } = props
   const { id } = await params
 

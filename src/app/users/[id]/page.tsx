@@ -1,5 +1,5 @@
 import { FileIcon } from 'lucide-react'
-import { type Metadata } from 'next'
+import { type Metadata, type ResolvingMetadata } from 'next'
 import { notFound } from 'next/navigation'
 
 import PostCard from '@/components/post-card'
@@ -9,14 +9,13 @@ import { getCurrentUser } from '@/lib/auth'
 import { SITE_URL } from '@/lib/constants'
 import { getUserById } from '@/queries/get-user-by-id'
 
-type UserPageProps = {
-  params: Promise<{
-    id: string
-  }>
-}
-
-export const generateMetadata = async (props: UserPageProps): Promise<Metadata> => {
-  const { id } = await props.params
+export const generateMetadata = async (
+  props: PageProps<'/users/[id]'>,
+  parent: ResolvingMetadata
+): Promise<Metadata> => {
+  const { params } = props
+  const { id } = await params
+  const { openGraph = {}, twitter = {} } = await parent
 
   const { user } = await getUserById(id)
 
@@ -27,16 +26,25 @@ export const generateMetadata = async (props: UserPageProps): Promise<Metadata> 
   return {
     title: user.name,
     description: user.bio,
+    alternates: {
+      canonical: `${SITE_URL}/users/${id}`
+    },
     openGraph: {
+      ...openGraph,
       title: user.name,
       description: user.bio ?? undefined,
       type: 'profile',
       url: `${SITE_URL}/users/${id}`
+    },
+    twitter: {
+      ...twitter,
+      title: user.name,
+      description: user.bio ?? undefined
     }
   }
 }
 
-const UserPage = async (props: UserPageProps) => {
+const UserPage = async (props: PageProps<'/users/[id]'>) => {
   const { params } = props
   const { id } = await params
   const currentUser = await getCurrentUser()

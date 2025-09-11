@@ -9,17 +9,11 @@ import { getCurrentUser } from '@/lib/auth'
 
 import Form from './form'
 
-type EditorPageProps = {
-  params: Promise<{
-    id: string
-  }>
-}
-
 export const metadata: Metadata = {
   title: 'Editor'
 }
 
-const EditorPage = async (props: EditorPageProps) => {
+const EditorPage = async (props: PageProps<'/editor/[id]'>) => {
   const { params } = props
   const { id } = await params
 
