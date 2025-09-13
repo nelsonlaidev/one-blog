@@ -15,7 +15,7 @@ export const generateMetadata = async (
 ): Promise<Metadata> => {
   const { params } = props
   const { id } = await params
-  const { openGraph = {}, twitter = {} } = await parent
+  const { openGraph = {} } = await parent
 
   const { user } = await getUserById(id)
 
@@ -35,11 +35,6 @@ export const generateMetadata = async (
       description: user.bio ?? undefined,
       type: 'profile',
       url: `${SITE_URL}/users/${id}`
-    },
-    twitter: {
-      ...twitter,
-      title: user.name,
-      description: user.bio ?? undefined
     }
   }
 }

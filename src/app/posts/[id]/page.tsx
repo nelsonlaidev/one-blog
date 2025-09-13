@@ -20,7 +20,7 @@ export const generateMetadata = async (
 ): Promise<Metadata> => {
   const { params } = props
   const { id } = await params
-  const { openGraph = {}, twitter = {} } = await parent
+  const { openGraph = {} } = await parent
 
   const { post } = await getPostMetadataById(id)
 
@@ -37,10 +37,10 @@ export const generateMetadata = async (
     },
     openGraph: {
       ...openGraph,
-      url: `${SITE_URL}/posts/${id}`,
-      type: 'article',
       title: post.title,
       description: post.description ?? undefined,
+      url: `${SITE_URL}/posts/${id}`,
+      type: 'article',
       publishedTime: ISOPublishedTime,
       modifiedTime: ISOModifiedTime,
       authors: `${SITE_URL}/users/${post.authorId}`,
@@ -49,21 +49,6 @@ export const generateMetadata = async (
           url: `${SITE_URL}/api/og?title=${post.title}`,
           width: 1200,
           height: 630,
-          alt: post.title,
-          type: 'image/png'
-        }
-      ]
-    },
-    twitter: {
-      ...twitter,
-      title: post.title,
-      description: post.description ?? undefined,
-      images: [
-        {
-          url: `${SITE_URL}/api/og?title=${post.title}`,
-          width: 1200,
-          height: 630,
-          alt: post.title,
           type: 'image/png'
         }
       ]
