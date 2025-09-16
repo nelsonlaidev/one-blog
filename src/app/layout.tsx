@@ -5,6 +5,7 @@ import '@/styles/globals.css'
 import { GeistMono } from 'geist/font/mono'
 import { GeistSans } from 'geist/font/sans'
 
+import Analytics from '@/components/analytics'
 import Footer from '@/components/footer'
 import Header from '@/components/header'
 import { Toaster } from '@/components/ui/sonner'
@@ -120,6 +121,7 @@ const RootLayout = (props: RootLayoutProps) => {
           <main className='mx-auto min-h-page max-w-4xl px-6 pt-24 pb-16'>{children}</main>
           <Toaster />
           <Footer />
+          <Analytics />
         </Providers>
       </body>
     </html>
