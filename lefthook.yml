@@ -3,10 +3,10 @@ pre-commit:
   jobs:
     - name: lint
       glob: '*.{mjs,js,ts,tsx}'
-      run: pnpm eslint "{staged_files}""
+      run: pnpm eslint "{staged_files}"
 
     - name: prettier
-      run: pnpm prettier --check "{staged_files}"
+      run: pnpm prettier --check "{staged_files}" -u
 
 commit-msg:
   parallel: true
