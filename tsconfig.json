@@ -7,8 +7,8 @@
       "~/*": ["./public/*"]
     }
   },
-  "exclude": ["node_modules"],
   "extends": "@nelsonlaidev/typescript-config/nextjs.json",
+  "exclude": ["node_modules"],
   "include": [
     "src",
     "next-env.d.ts",
