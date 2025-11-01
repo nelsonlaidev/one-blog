@@ -1,0 +1,18 @@
+pre-commit:
+  parallel: true
+  jobs:
+    - name: lint
+      glob: '*.{mjs,js,ts,tsx}'
+      run: pnpm eslint "{staged_files}""
+
+    - name: prettier
+      run: pnpm prettier --check "{staged_files}"
+
+commit-msg:
+  parallel: true
+  jobs:
+    - name: commitlint
+      run: pnpm commitlint --edit {1}
+
+    - name: spelling
+      run: pnpm check:spelling {1}
