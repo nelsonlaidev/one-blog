@@ -9,5 +9,15 @@
   },
   "exclude": ["node_modules"],
   "extends": "@nelsonlaidev/typescript-config/nextjs.json",
-  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts", "postcss.config.mjs"]
+  "include": [
+    "src",
+    "next-env.d.ts",
+    ".next/types/**/*.ts",
+    "postcss.config.mjs",
+    "commitlint.config.ts",
+    "eslint.config.ts",
+    "knip.config.ts",
+    "next.config.ts",
+    "drizzle.config.ts"
+  ]
 }
