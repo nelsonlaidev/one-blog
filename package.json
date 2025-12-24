@@ -19,7 +19,7 @@
     "preinstall": "npx --yes only-allow pnpm",
     "knip": "pnpm with-env knip",
     "lint": "eslint . --max-warnings 0",
-    "lint:fix": "eslint --fix .",
+    "lint:fix": "eslint --fix . --max-warnings 0",
     "prepare": "lefthook install",
     "start": "next start",
     "typecheck": "tsc --noEmit",

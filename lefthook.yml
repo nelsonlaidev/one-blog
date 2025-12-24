@@ -6,5 +6,5 @@ pre-commit:
 
     - name: lint
       glob: '*.{js,jsx,cjs,mjs,ts,tsx,cts,mts,d.ts,d.cjs,d.mts}'
-      run: pnpm eslint --fix "{staged_files}"
+      run: pnpm eslint --fix "{staged_files}" --max-warnings 0
       stage_fixed: true
