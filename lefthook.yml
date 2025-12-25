@@ -1,4 +1,5 @@
 pre-commit:
+  parallel: true
   jobs:
     - name: prettier
       run: pnpm prettier --write --ignore-unknown "{staged_files}"
